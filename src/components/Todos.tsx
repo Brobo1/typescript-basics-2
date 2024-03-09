@@ -1,29 +1,22 @@
-import React      from "react";
-import {Todo}     from "../models/todo";
-import {TodoItem} from "./TodoItem";
-import styles     from "./compStyles/Todos.module.css";
+import React, {FC, useContext} from "react";
+import {TodoItem}              from "./TodoItem";
+import styles                  from "./compStyles/Todos.module.css";
+import {TodosContext}          from "../store/todos-context";
 
 
-export const Todos: React.FC<{
-  items: Todo[],
-  onClick: (id: string) => void
-}> = (props) => {
-  
-  return (
-    <ul className={styles.ul}>
-      {props.items.map((item) => (
-        <TodoItem
-          key={item.id}
-          id={item.id}
-          onClick={props.onClick.bind(null, item.id)}
-          text={item.text}
-        />
-      ))}
-    </ul>
-  );
+export const Todos: FC = () => {
+	const todosCtx = useContext(TodosContext);
+	
+	return (
+		<ul className={styles.ul}>
+			{todosCtx.items.map((item) => (
+				<TodoItem
+					key={item.id}
+					id={item.id}
+					onClick={todosCtx.removeTodo.bind(null, item.id)}
+					text={item.text}
+				/>
+			))}
+		</ul>
+	);
 }
-
-
-
-
-
