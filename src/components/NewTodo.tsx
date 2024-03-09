@@ -9,16 +9,12 @@ export const NewTodo: FC = () => {
 	
 	function submitHandler(event: FormEvent) {
 		event.preventDefault();
-		
 		const enteredText = todoTextInputRef.current!.value;
-		
 		if (enteredText.trim().length === 0) {
 			//throw error
 			return;
 		}
-		
 		todosCtx.addTodo(enteredText);
-		
 	}
 	
 	return (
