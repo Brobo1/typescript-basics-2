@@ -12,7 +12,7 @@ export const TodosContext = createContext<TodosContextObj>({
 	items:      [],
 	addTodo:    () => {},
 	removeTodo: () => {},
-});
+}); 
 
 export const TodosContextProvider: FC<{ children: ReactNode }> = (props) => {
 	const [todos, setTodos] = useState<Todo[]>([]);
